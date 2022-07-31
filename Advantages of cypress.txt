@@ -1,0 +1,6 @@
+1. Its wait till the page loads or graphic page load to find the element.(4sec which can be configured)
+2. Takes a screenshot of the execution(before - After test step execution)
+3. Take a video of execution.
+4. Open source, Its javascript language, Downloaded through npm module.
+5. Ability to test Edge Testcases by Mocking the server response
+6. Reilability of script execution is good compared to other tools.
