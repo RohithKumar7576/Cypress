@@ -1,0 +1,4 @@
+1st cmd = cd C:\Program Files\Jenkins
+2nd cmd = ..\Java\jdk-17.0.4.1\bin\java -jar jenkins.war --httpPort=9090
+
+pwd - 22dac465100842b191272465c7017acf
