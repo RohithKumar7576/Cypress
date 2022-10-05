@@ -1,0 +1,106 @@
+1. Vists('URL') -->For navigating to given URL.
+2. Get('class') ---> For locating to element.
+3. get('parent').find('child') ---> To find the parent of child
+4. get('element').contains('text') ---> Used to identify element based on text
+5. get('element').eq(0) ---> used to identifiy based on index
+6. get('element').als('Aliys name of element')---> used to provide alias name to element to easy script maintains
+7. get('element').should('have.length',4) ---> Should is used as assertion -> have has multiple variable to validates
+8. get('elements')each(($el, index, $list) => { logic to itertate and validate the elements }) --> Used to iterate the elements-> $el is referring to each element.
+9. Promises
+	Cypress have three mode of promises 1.Rejected, Resolved & Pending.
+	a. Cypress is Asynchronus (No step by step execution) to handle it cypress used then() for handling the promises.
+      b. we use any other methods then cypress we need to manually handle the promises using then method.
+10. cy.wrap($el.find('button')).click() ---> Click is depreated inside each loop so using cy.wrap(element) to perform actions.
+11. text() is a Jquery method used in Cypress.
+12. Console.log('log') --> Will print in browser console
+13. Cy.log('log') --> Used to print in cypress execution log.
+------------------------------------------------------------------------
+Checkbox selection
+
+get('').check() --> for selecting the particular checkbox
+get('').check().should('be.checked').and('have.value','options1') ---> to check and validate the checked r not and adding one more assertion using 'and' with  continuiation.
+											---> 'be' used for behaviour and 'have' used for comparsion
+get('commonAttribute for checkbox').check(['option1','option2'])  ---> for selecting multiple checkboxs
+get('').should('not.be.checked')---> for validating not checked.
+
+Note : Should uses chai JS libarary for assertion
+-----------------------------------------------------------------------
+dropdown selection
+
+get('select').select('dropdown element') --->Static dropdown
+              
+get('textbox').type('ind')			---> Dyanamic dropdown
+get('activated dropdowns with values').each(()) --> Identifie with values and perform a action
+-----------------------------------------------------------------------
+
+Window pop up
+
+cy.on('window:alert',(str)=>							---> 'on' method is used to execute the alert popups
+{		
+   //Mocha
+    expect(str).to.equal('Hello , share this practice page and share your knowledge') ---> As Cypress will handle all the alert popup, So we need to manually invoke Popup alert through code
+})															
+
+cy.url().should('include','Acdemytest')  --->To validate the url 
+
+cy.go('back')                             ----> Navigate back in browser
+
+cy.get('#opentab').invoke('removeAttr','target').click()  ----> Cypress wont support multiple windows So we're doing work around by removing 'target'  attribut and opening in same window.
+
+------------------------------------------------------------------------
+
+To handle table
+
+ 
+cy.get('tr td:nth-child(2)').each(($e1, index, $list) => { ---->Identifing the 2nd column all values and iterating it
+ 
+    const text=$e1.text()
+    if(text.includes("Python"))
+    {
+ 
+        cy.get("tr td:nth-child(2)").eq(index).next().then(function(price) ---> We've 'next()' to move to siblings of element identified
+        {
+         const priceText=   price.text()                                   ---->Defining new then method to get sub child value.
+         expect(priceText).to.equal('26')
+        })
+    }
+
+---------------------------------------------------------------------
+Mouse hover
+
+Cypress wont support mouse hover, So again we use 'invoke()' to show the hidden web element.
+
+We have Click({force.true}) --> to click on hidden element
+
+//cy.get('div.mouse-hover-content').invoke('show')
+cy.contains('Top').click({force: true})
+
+--------------------------------------
+Cypress wont support diff domain page for sub window popup
+------------------------------------
+For reading any attribute propertie we need to use Jquery for that
+
+cy.get('#Opentab').then(function(el)=>(
+	const href=el.prop('href')
+)
+
+-------------------------------------
+IFrame
+
+need to add a npm for handling the frames
+
+npm install -D Cypress-iframes --->installing iframe
+
+We need to import in class to work on
+import 'cypress-iframe'
+
+cy.frameloaded('frame id')  ---> First to load the frame
+
+cy.iframe().get('') ------> To work on Iframe element we need to iframe method
+
+-=---------------------------------------------------
+
+
+
+
+
